@@ -283,6 +283,7 @@ body {
   margin-bottom: 1rem;
 }
 .section-title {
+  color: var(--white);
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
