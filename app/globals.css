@@ -15,6 +15,9 @@
   --text-dim: #666666;
   --border: rgba(255,255,255,0.06);
   --border-hover: rgba(255,255,255,0.12);
+  --nav-bg: rgba(17,17,17,0.95);
+  --hero-overlay: linear-gradient(160deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.7) 100%);
+  --hero-text: #F5F5F5;
   --font-heading: 'Oswald', sans-serif;
   --font-body: 'Inter', sans-serif;
   --nav-height: 80px;
@@ -32,7 +35,10 @@
   --text-dim: #6B7280;
   --border: rgba(0,0,0,0.1);
   --border-hover: rgba(0,0,0,0.15);
+  --nav-bg: rgba(255,255,255,0.95);
   --red-glow: rgba(196, 30, 30, 0.08);
+  --hero-overlay: linear-gradient(160deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.85) 100%);
+  --hero-text: #111111;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -66,9 +72,9 @@ body {
   transition: background var(--transition), box-shadow var(--transition);
 }
 .navbar.scrolled {
-  background: rgba(10,10,10,0.95);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.15);
 }
 .nav-logo {
   display: flex; align-items: center; gap: 0.5rem;
@@ -128,7 +134,7 @@ body {
 
 .btn-book {
   background: var(--red);
-  color: var(--white);
+  color: #FFFFFF;
   border: none;
   padding: 0.7rem 1.5rem;
   font-family: var(--font-heading);
@@ -171,7 +177,7 @@ body {
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(160deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.7) 100%);
+  background: var(--hero-overlay);
 }
 .hero-content {
   position: relative; z-index: 2;
@@ -186,7 +192,7 @@ body {
 .hero-badge {
   display: inline-block;
   background: var(--red);
-  color: var(--white);
+  color: #FFFFFF;
   padding: 0.4rem 1.2rem;
   font-size: 0.7rem;
   font-weight: 600;
@@ -213,7 +219,7 @@ body {
 .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn-primary {
   background: var(--red);
-  color: var(--white);
+  color: #FFFFFF;
   border: none;
   padding: 1rem 2.5rem;
   font-family: var(--font-heading);
@@ -228,8 +234,8 @@ body {
 .btn-primary:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(224,0,0,0.3); }
 .btn-outline {
   background: transparent;
-  color: var(--white);
-  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--hero-text);
+  border: 1px solid var(--hero-text);
   padding: 1rem 2.5rem;
   font-family: var(--font-heading);
   font-size: 0.9rem;
@@ -240,7 +246,7 @@ body {
   transition: all var(--transition);
   text-decoration: none;
 }
-.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+.btn-outline:hover { border-color: var(--hero-text); background: rgba(128,128,128,0.1); }
 
 /* ===== BRAND STRIP ===== */
 .brand-strip {
@@ -553,7 +559,7 @@ body {
 .cookie-banner a { color: var(--red); text-decoration: underline; }
 .cookie-buttons { display: flex; gap: 0.75rem; flex-shrink: 0; }
 .cookie-accept {
-  background: var(--red); color: var(--white); border: none;
+  background: var(--red); color: #FFFFFF; border: none;
   padding: 0.6rem 1.5rem; font-weight: 600; font-size: 0.8rem;
   letter-spacing: 1px; cursor: pointer; transition: background var(--transition);
 }
