@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
 
 :root {
-  --red: #E00000;
-  --red-hover: #FF1A1A;
-  --red-dark: #B00000;
-  --dark: #0A0A0A;
-  --dark-card: #141414;
-  --dark-card-hover: #1A1A1A;
-  --dark-surface: #1F1F1F;
-  --white: #FFFFFF;
-  --text-muted: #9CA3AF;
-  --text-dim: #6B7280;
-  --border: rgba(255,255,255,0.08);
-  --border-hover: rgba(255,255,255,0.15);
+  --red: #C41E1E;
+  --red-hover: #E02D2D;
+  --red-dark: #9A1515;
+  --red-glow: rgba(196, 30, 30, 0.15);
+  --dark: #111111;
+  --dark-card: #1A1A1A;
+  --dark-card-hover: #222222;
+  --dark-surface: #252525;
+  --dark-deeper: #0C0C0C;
+  --white: #F5F5F5;
+  --text-muted: #A0A0A0;
+  --text-dim: #666666;
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
   --font-heading: 'Oswald', sans-serif;
   --font-body: 'Inter', sans-serif;
   --nav-height: 80px;
@@ -33,7 +35,12 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Remove any default focus/outline glows */
+*:focus { outline: none; }
+*:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
 /* ===== NAVBAR ===== */
 .navbar {
@@ -139,11 +146,11 @@ body {
 .hero-bg {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  filter: brightness(0.35);
+  filter: brightness(0.3) saturate(0.8);
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 100%);
+  background: linear-gradient(160deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.7) 100%);
 }
 .hero-content {
   position: relative; z-index: 2;
@@ -216,7 +223,9 @@ body {
 
 /* ===== BRAND STRIP ===== */
 .brand-strip {
-  background: var(--white);
+  background: var(--dark-deeper);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   padding: 1.5rem 2rem;
   display: flex; align-items: center; justify-content: center;
   gap: clamp(2rem, 5vw, 5rem);
@@ -227,8 +236,12 @@ body {
   font-size: clamp(0.9rem, 1.3vw, 1.2rem);
   font-weight: 600;
   letter-spacing: 4px;
-  color: #888;
+  color: #555;
   text-transform: uppercase;
+  transition: color var(--transition);
+}
+.brand-strip span:hover {
+  color: var(--red);
 }
 
 /* ===== SECTIONS ===== */
@@ -263,7 +276,7 @@ body {
   line-height: 1.7;
 }
 .section-dark { background: var(--dark); }
-.section-darker { background: #060606; }
+.section-darker { background: var(--dark-deeper); }
 
 /* ===== SERVICES ===== */
 .services-grid {
@@ -293,7 +306,7 @@ body {
 .service-card:hover::before { transform: scaleX(1); }
 .service-icon {
   width: 50px; height: 50px;
-  background: rgba(224,0,0,0.1);
+  background: var(--red-glow);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 1.5rem;
@@ -332,7 +345,7 @@ body {
 }
 .process-number {
   width: 80px; height: 80px;
-  background: var(--dark-card);
+  background: var(--dark-deeper);
   border: 2px solid var(--red);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -373,7 +386,7 @@ body {
 .gallery-item:hover img { transform: scale(1.08); }
 .gallery-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(224,0,0,0.6) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(196,30,30,0.5) 0%, transparent 60%);
   opacity: 0;
   transition: opacity var(--transition);
   display: flex; align-items: flex-end;
@@ -439,7 +452,7 @@ body {
 }
 .contact-detail-icon {
   width: 40px; height: 40px; min-width: 40px;
-  background: rgba(224,0,0,0.1);
+  background: var(--red-glow);
   border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
   color: var(--red); font-size: 1.1rem;
@@ -458,7 +471,7 @@ body {
 
 /* ===== FOOTER ===== */
 .footer {
-  background: #050505;
+  background: var(--dark-deeper);
   border-top: 1px solid var(--border);
   padding: 3.5rem clamp(1.5rem, 4vw, 4rem) 1.5rem;
 }
