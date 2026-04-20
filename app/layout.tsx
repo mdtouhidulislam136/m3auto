@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { LanguageProvider } from './components/LanguageContext';
+import { ThemeProvider } from './components/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'M3Auto Oy - Luotettava Autokorjaamo Tampereella',
@@ -57,7 +58,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

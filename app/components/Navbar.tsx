@@ -1,13 +1,17 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
+import { useTheme } from 'next-themes';
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLanguage();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -27,6 +31,15 @@ export default function Navbar() {
         <li><a href="#contact" onClick={() => setMenuOpen(false)}>{t('nav.contact')}</a></li>
       </ul>
       <div className="nav-right">
+        {mounted && (
+          <button 
+            className="theme-toggle" 
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
+        )}
         <button className="lang-toggle" onClick={toggleLang} aria-label="Toggle language">
           {lang === 'fi' ? 'EN' : 'FI'}
         </button>

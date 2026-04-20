@@ -21,6 +21,20 @@
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+[data-theme='light'] {
+  --dark: #FFFFFF;
+  --dark-card: #F9FAFB;
+  --dark-card-hover: #F3F4F6;
+  --dark-surface: #F3F4F6;
+  --dark-deeper: #FFFFFF;
+  --white: #111111;
+  --text-muted: #4B5563;
+  --text-dim: #6B7280;
+  --border: rgba(0,0,0,0.1);
+  --border-hover: rgba(0,0,0,0.15);
+  --red-glow: rgba(196, 30, 30, 0.08);
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -91,7 +105,7 @@ body {
 .nav-links a:hover::after { width: 100%; }
 
 .nav-right { display: flex; align-items: center; gap: 1rem; }
-.lang-toggle {
+.lang-toggle, .theme-toggle {
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-muted);
@@ -102,8 +116,15 @@ body {
   letter-spacing: 1px;
   cursor: pointer;
   transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.lang-toggle:hover { border-color: var(--white); color: var(--white); }
+.theme-toggle {
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+.lang-toggle:hover, .theme-toggle:hover { border-color: var(--white); color: var(--white); }
 
 .btn-book {
   background: var(--red);
